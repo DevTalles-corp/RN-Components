@@ -20,7 +20,7 @@ export const MenuItem = ({ name, icon, component, isFirst = false, isLast = fals
 
   return (
     <Pressable
-      onPress={ () => navigation(component) }
+      onPress={ () => navigation.navigate(component) }
     >
       <View style={{
         ...styles.container,
