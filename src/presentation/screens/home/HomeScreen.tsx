@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import { View} from 'react-native';
 import {globalStyles} from '../../../config/theme/theme';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Title} from '../../components/ui/Title';
