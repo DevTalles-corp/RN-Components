@@ -1,10 +1,11 @@
 import { CustomView } from '../../components/ui/CustomView';
 import { Title } from '../../components/ui/Title';
 import { Card } from '../../components/ui/Card';
-import { SectionList, Text } from 'react-native';
+import { SectionList, Text, useWindowDimensions } from 'react-native';
 import { SubTitle } from '../../components/ui/SubTitle';
 import { colors } from '../../../config/theme/theme';
 import { Separator } from '../../components/ui/Separator';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 interface Houses {
@@ -91,6 +92,10 @@ const houses: Houses[] = [
 
 
 export const CustomSectionListScreen = () => {
+
+  const { height } = useWindowDimensions();
+  const { top } = useSafeAreaInsets();
+
   return (
     <CustomView margin>
       <Title text='Lista de personajes' safe />
@@ -109,6 +114,9 @@ export const CustomSectionListScreen = () => {
           ListFooterComponent={ () => <Title text={ `Secciones: ${ houses.length }` } /> }
 
           showsVerticalScrollIndicator={ false }
+          style={{
+            height: height - top - 120
+          }}
         />
       </Card>
 
