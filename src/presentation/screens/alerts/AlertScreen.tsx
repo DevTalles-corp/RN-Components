@@ -1,8 +1,11 @@
-import {Alert, Text, View} from 'react-native';
+import {Alert,Text, View} from 'react-native';
+
+
 import {CustomView} from '../../components/ui/CustomView';
 import {Title} from '../../components/ui/Title';
 import {globalStyles} from '../../../config/theme/theme';
 import {Button} from '../../components/ui/Button';
+import { showPrompt } from '../../../config/adapters/prompt.adapter';
 
 export const AlertScreen = () => {
   const createTwoButtonAlert = () => {
@@ -22,23 +25,52 @@ export const AlertScreen = () => {
   };
 
   const createThreeButtonAlert = () =>
-    Alert.alert('Alert Title', 'My Alert Msg', [
-      {text: 'OK', onPress: () => console.log('OK Pressed')},
+    Alert.alert(
+      'Alert Title',
+      'My Alert Msg',
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        {
+          text: 'Ask me later',
+          onPress: () => console.log('Ask me later pressed'),
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'destructive',
+        },
+      ],
       {
-        text: 'Ask me later',
-        onPress: () => console.log('Ask me later pressed'),
+        cancelable: true,
+        onDismiss() {
+          console.log('onDismiss');
+        },
       },
-      {
-        text: 'Cancel',
-        onPress: () => console.log('Cancel Pressed'),
-        style: 'destructive',
-      },
-    ], {
-      cancelable: true,
-      onDismiss() {
-        console.log('onDismiss');
-      },
+    );
+
+  const onShowPrompt = () => {
+
+    showPrompt({
+      title: 'Lorem Ipsum',
+      subTitle: 'Nostrud qui duis officia dolor enim.',
+      buttons: [
+        { text: 'Ok', onPress: () => console.log('ok') }
+      ],
+      placeholder: 'Placeholder'
     });
+  
+
+    // ! Código nativo
+    // Alert.prompt(
+    //   'Correo electronico',
+    //   'Enim commodo ut amet esse aliqua.',
+    //   (valor: string) => console.log({valor}),
+    //   'secure-text',
+    //   'Soy el valor por defecto',
+    //   'number-pad'
+    // );
+
+  };
 
   return (
     <CustomView style={globalStyles.globalMargin}>
@@ -52,7 +84,7 @@ export const AlertScreen = () => {
 
       <View style={{height: 10}} />
 
-      <Button text="Prompt - Input" onPress={() => {}} />
+      <Button text="Prompt - Input" onPress={onShowPrompt} />
     </CustomView>
   );
 };
