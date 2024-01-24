@@ -20,7 +20,8 @@ export const Button = ({ text, styles, onPress }:Props) => {
         {
           opacity: pressed ? 0.8 : 1,
           backgroundColor: colors.primary,
-        }
+        },
+        styles
       ]) }
     >
       <Text style={[
@@ -28,7 +29,7 @@ export const Button = ({ text, styles, onPress }:Props) => {
         {
           color: colors.buttonTextColor
         }
-      ]}>Button</Text>
+      ]}>{ text }</Text>
       
     </Pressable>
   )
