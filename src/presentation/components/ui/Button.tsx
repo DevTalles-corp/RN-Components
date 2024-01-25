@@ -1,5 +1,7 @@
 import { Pressable, StyleProp, Text, View, ViewStyle } from 'react-native';
-import { colors, globalStyles } from '../../../config/theme/theme';
+import { globalStyles } from '../../../config/theme/theme';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 interface Props {
@@ -12,6 +14,9 @@ interface Props {
 
 
 export const Button = ({ text, styles, onPress }:Props) => {
+
+  const { colors } = useContext( ThemeContext );
+
   return (
     <Pressable
       onPress={ onPress }
