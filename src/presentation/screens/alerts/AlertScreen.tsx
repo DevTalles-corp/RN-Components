@@ -6,8 +6,14 @@ import {Title} from '../../components/ui/Title';
 import {globalStyles} from '../../../config/theme/theme';
 import {Button} from '../../components/ui/Button';
 import { showPrompt } from '../../../config/adapters/prompt.adapter';
+import { useContext } from 'react';
+import { ThemeContext } from '../../context/ThemeContext';
 
 export const AlertScreen = () => {
+
+  const { isDark } = useContext( ThemeContext );
+
+
   const createTwoButtonAlert = () => {
     Alert.alert(
       'Alert Title',
@@ -20,7 +26,9 @@ export const AlertScreen = () => {
         },
         {text: 'OK', onPress: () => console.log('OK Pressed')},
       ],
-      {},
+      {
+        userInterfaceStyle: isDark ? 'dark' : 'light'
+      },
     );
   };
 
@@ -45,6 +53,7 @@ export const AlertScreen = () => {
         onDismiss() {
           console.log('onDismiss');
         },
+        userInterfaceStyle: isDark ? 'dark' : 'light'
       },
     );
 
@@ -56,8 +65,9 @@ export const AlertScreen = () => {
       buttons: [
         { text: 'Ok', onPress: () => console.log('ok') }
       ],
-      placeholder: 'Placeholder'
-    });
+      placeholder: 'Placeholder',
+      
+    },);
   
 
     // ! Código nativo
