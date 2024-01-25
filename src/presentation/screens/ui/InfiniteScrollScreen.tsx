@@ -18,7 +18,7 @@ export const InfiniteScrollScreen = () => {
   };
 
   return (
-    <View style={{backgroundColor: 'black'}}>
+    <View style={{backgroundColor: 'black' }}>
       <FlatList
         data={numbers}
         onEndReached={loadMore}
