@@ -25,8 +25,9 @@ export const Navigator = () => {
       headerShown: false,
       cardStyle: {
         backgroundColor: colors.background,
-      },
-    }}>
+      }
+    }}
+    >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
       <Stack.Screen name="Animation102Screen" component={Animation102Screen} />
