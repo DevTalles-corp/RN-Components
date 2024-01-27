@@ -1,9 +1,9 @@
-import { PropsWithChildren, createContext, useEffect, useState } from 'react';
-import { ThemeColors, darkColors, lightColors } from '../../config/theme/theme';
-import { AppState, Appearance, useColorScheme } from 'react-native';
+import {PropsWithChildren, createContext, useEffect, useState} from 'react';
+import {ThemeColors, darkColors, lightColors} from '../../config/theme/theme';
+import {AppState, Appearance, useColorScheme} from 'react-native';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
 type ThemeColor = 'light' | 'dark';
-
 
 interface ThemeContextProps {
   currentTheme: ThemeColor;
@@ -13,18 +13,18 @@ interface ThemeContextProps {
   setTheme: (theme: ThemeColor) => void;
 }
 
-export const ThemeContext = createContext({} as ThemeContextProps );
+export const ThemeContext = createContext({} as ThemeContextProps);
 
-
-
-export const ThemeProvider = ({ children }: PropsWithChildren ) => {
-
+export const ThemeProvider = ({children}: PropsWithChildren) => {
   const colorScheme = useColorScheme();
   const [currentTheme, setCurrentTheme] = useState<ThemeColor>('light');
 
+  const isDark = currentTheme === 'dark';
+  const colors = isDark ? darkColors : lightColors;
+
 
   useEffect(() => {
-    if ( colorScheme === 'dark' ) {
+    if (colorScheme === 'dark') {
       setCurrentTheme('dark');
     } else {
       setCurrentTheme('light');
@@ -43,29 +43,21 @@ export const ThemeProvider = ({ children }: PropsWithChildren ) => {
   //   };
   // }, []);
 
-
-  
-
-
   const setTheme = (theme: ThemeColor) => {
-    setCurrentTheme( theme );
-  }
-
+    setCurrentTheme(theme);
+  };
 
   return (
-    <ThemeContext.Provider
-      value={{
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
+      <ThemeContext.Provider
+        value={{
           currentTheme: currentTheme,
-          isDark: (currentTheme !== 'light' ),
-          colors:  (currentTheme === 'light' ? lightColors : darkColors ),
+          isDark: isDark,
+          colors: colors,
           setTheme: setTheme,
-      }}
-    >
-      { children }
-    </ThemeContext.Provider>
-  )
-}
-
-
-
-
+        }}>
+        {children}
+      </ThemeContext.Provider>
+    </NavigationContainer>
+  );
+};
