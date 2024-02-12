@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="electronic.png" translatesAutoresizingMaskIntoConstraints="NO" id="br8-AQ-KXo">
-                                <rect key="frame" x="71" y="174" width="233" height="319"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="electronic.png" translatesAutoresizingMaskIntoConstraints="NO" id="qR1-GS-FcZ">
+                                <rect key="frame" x="77" y="186" width="221" height="295"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
