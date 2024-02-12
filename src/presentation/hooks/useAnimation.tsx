@@ -6,13 +6,6 @@ export const useAnimation = () => {
   const animatedTop = useRef(new Animated.Value(0)).current;
 
   const fadeIn = ({duration = 300, toValue = 1, callback = () => {}}) => {
-    // Animated.timing( animatedTop, {
-    //   toValue: 0,
-    //   duration: 700,
-    //   useNativeDriver: true,
-    //   easing: Easing.bounce, //Easing.elastic(2)
-    // }).start( () => console.log('Animation ended') );
-
     Animated.timing(animatedOpacity, {
       toValue: toValue,
       duration: duration,
@@ -26,8 +19,6 @@ export const useAnimation = () => {
       duration: duration,
       useNativeDriver: true,
     }).start(callback);
-
-    //() => animatedTop.resetAnimation()
   };
 
   const startMovingTopPosition = ({
@@ -35,21 +26,16 @@ export const useAnimation = () => {
     toValue = 0,
     duration = 300,
     easing = Easing.linear,
-    callback = () => {}
+    callback = () => {},
   }) => {
-
-    animatedTop.setValue( initialPosition );
-    Animated.timing( animatedTop, {
+    animatedTop.setValue(initialPosition);
+    Animated.timing(animatedTop, {
       toValue: toValue,
       duration: duration,
       useNativeDriver: true,
-      easing: easing
-    }).start( callback );
-
-
-  }
-
-
+      easing: easing,
+    }).start(callback);
+  };
 
   return {
     // Properties
