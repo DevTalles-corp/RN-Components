@@ -1,4 +1,4 @@
-package com.componentsapp
+package com.fernandoherrera.rncomponentsapp
 
 import android.os.Bundle;
 
